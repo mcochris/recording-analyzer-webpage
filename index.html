@@ -5,12 +5,12 @@
 	<meta charset="UTF-8">
 	<title>Recording Analyzer</title>
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>">
-	<link href="https://unpkg.com/tabulator-tables@6.4.0/dist/css/tabulator_modern.min.css" rel="stylesheet">
+	<link href="https://unpkg.com/tabulator-tables@6.4.0/dist/css/tabulator_simple.min.css" rel="stylesheet">
 	<script src="https://unpkg.com/tabulator-tables@6.4.0/dist/js/tabulator.min.js"></script>
 	<script defer src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
 	<style>
 		body {
-			background-color: whitesmoke;
+			background-color: #bebab0;
 		}
 
 		.button-row {
@@ -47,7 +47,7 @@
 		const COLUMN_DEFS = [
 			{ title: "ID", field: "id", sorter: "number", visible: false },
 			{ title: "Path", field: "path", sorter: "string" },
-			{ title: "File", field: "file", minWidth: 200, sorter: "string" },
+			{ title: "File", field: "file", sorter: "string" },
 			{ title: "Genre", field: "genre", sorter: "string" },
 			{ title: "Artist", field: "artist", sorter: "string" },
 			{ title: "Album", field: "album", sorter: "string" },
@@ -77,13 +77,14 @@
 
 		const table = new Tabulator("#table", {
 			columns: [],
-			layout: "fitDataFill",
+			height: "80vh",
+			layout: "fitData",
 			pagination: "local",
-			paginationSize: 50,
-			movableColumns: true,
 			selectableRows: true,
+			selectableRowsRangeMode: "click",
 			movableRows: true,
-			selectableRowsRangeMode: "click"
+			rowHeader: { headerSort: false, resizable: false, minWidth: 30, width: 30, rowHandle: true, formatter: "handle" },
+			persistence: true,
 		});
 
 		document.getElementById("load-btn").addEventListener("click", () => {
@@ -114,10 +115,6 @@
 				const file = row.file ?? "";
 				const path = row.path ?? "";
 
-				// Derive a display title from the filename (strip path and extension)
-				//const basename = file.split(/[\\/]/).pop().replace(/\.[^.]+$/, "");
-
-				//lines.push(`#EXTINF:${duration},${artist} - ${basename}`);
 				lines.push(`#EXTINF:${duration},${artist2}${file}`);
 				lines.push(`${path}/${file}`);
 			}
