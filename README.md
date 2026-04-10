@@ -1,1 +1,1 @@
-This is the webiste associated the the recording-analyzer CLI tool.
+This is the website associated the the recording-analyzer CLI tool.
