@@ -42,14 +42,6 @@ const table = new Tabulator("#table", {
 	movableRows: true,
 	rowHeader: { headerSort: false, resizable: false, minWidth: 30, width: 30, rowHandle: true, formatter: "handle" },
 	persistence: true,
-	importFileValidator: function (data) {
-		return file.size > 1000000 ? "File Too Big" : true; //abort the import if the file is bigger that 1MB
-	}
-});
-
-// Trigger an alert with the error message if the import fails
-table.on("importError", function (err) {
-	alert(err);
 });
 
 document.getElementById("load-btn").addEventListener("click", () => {
