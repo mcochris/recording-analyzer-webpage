@@ -13,6 +13,11 @@
 			background-color: #bebab0;
 		}
 
+		.title-row {
+			display: flex;
+			align-items: center;
+		}
+
 		.button-row {
 			display: flex;
 			justify-content: space-between;
@@ -28,7 +33,11 @@
 </head>
 
 <body>
-	<h1>Recording Analysis</h1>
+	<div class="title-row">
+		<img src="magnifying glass.png" alt="Magnifying Glass Icon" width="64" height="64">
+		<h1>Recording Analysis</h1>
+	</div>
+
 	<div class="button-row">
 		<div class="left-buttons">
 			<button type="button" id="load-btn">Load JSON File</button>
