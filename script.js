@@ -43,7 +43,7 @@ const table = new Tabulator("#table", {
 	rowHeader: { headerSort: false, resizable: false, minWidth: 30, width: 30, rowHandle: true, formatter: "handle" },
 	persistence: true,
 	importFileValidator: function (data) {
-		return file.size > 1000 ? "File Too Big" : true; //abort the import if the file is bigger that 1MB
+		return file.size > 1000000 ? "File Too Big" : true; //abort the import if the file is bigger that 1MB
 	}
 });
 
