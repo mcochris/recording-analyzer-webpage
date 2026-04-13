@@ -1,0 +1,20 @@
+body {
+	background-color: #bebab0;
+}
+
+.title-row {
+	display: flex;
+	align-items: center;
+}
+
+.button-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 16px;
+}
+
+.left-buttons {
+	display: flex;
+	gap: 8px;
+}
