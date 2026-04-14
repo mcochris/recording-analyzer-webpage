@@ -7,6 +7,7 @@
 //
 document.getElementById("playlist-btn").disabled = true;
 document.getElementById("export-btn").disabled = true;
+document.getElementById("clear-btn").disabled = true;
 
 //
 // Define all possible columns with their titles and field names.
@@ -71,6 +72,7 @@ document.getElementById("load-btn").addEventListener("click", () => {
 		table.setColumns(columns);
 		document.getElementById("playlist-btn").disabled = false;
 		document.getElementById("export-btn").disabled = false;
+		document.getElementById("clear-btn").disabled = false;
 	});
 });
 
@@ -144,5 +146,11 @@ document.getElementById("help-btn").addEventListener("click", () => {
 });
 
 document.getElementById("clear-btn").addEventListener("click", () => {
-	table.clearData();
+	document.getElementById("table").innerHTML = "";
+	table = null;
+	localStorage.clear();
+	location.reload();
+	document.getElementById("playlist-btn").disabled = true;
+	document.getElementById("export-btn").disabled = true;
+	document.getElementById("clear-btn").disabled = true;
 });
