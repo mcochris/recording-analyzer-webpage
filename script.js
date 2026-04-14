@@ -1,6 +1,16 @@
+//====================================
+// Recording Analyzer Web App
+//====================================
+
+//
+// Disable playlist and export buttons until data is loaded.
+//
 document.getElementById("playlist-btn").disabled = true;
 document.getElementById("export-btn").disabled = true;
 
+//
+// Define all possible columns with their titles and field names.
+//
 const COLUMN_DEFS = [
 	{ title: "ID", field: "id", sorter: "number", visible: false },
 	{ title: "Path", field: "path", sorter: "string" },
@@ -26,12 +36,18 @@ const COLUMN_DEFS = [
 	{ title: "LRA (LU)", field: "loudness_range_lu", sorter: "number" }
 ];
 
+//
+// Determine which columns to show based on the fields present in the data.
+//
 function columnsFromData(data) {
 	if (!data.length) return [];
 	const presentFields = new Set(Object.keys(data[0]));
 	return COLUMN_DEFS.filter(col => presentFields.has(col.field));
 }
 
+//
+// Initialize Tabulator with no columns and wait for the JSON file to be loaded before setting them.
+//
 const table = new Tabulator("#table", {
 	columns: [],
 	height: "80vh",
@@ -44,6 +60,9 @@ const table = new Tabulator("#table", {
 	persistence: true,
 });
 
+//
+// Load button imports the JSON file and populates the table with the data.
+//
 document.getElementById("load-btn").addEventListener("click", () => {
 	table.import("json", ".json").then(() => {
 		const data = table.getData();
@@ -54,6 +73,9 @@ document.getElementById("load-btn").addEventListener("click", () => {
 	});
 });
 
+//
+// Playlist button generates an M3U8 playlist from the selected rows in the table.
+//
 document.getElementById("playlist-btn").addEventListener("click", () => {
 	const selectedRows = table.getSelectedData();
 
@@ -85,6 +107,9 @@ document.getElementById("playlist-btn").addEventListener("click", () => {
 	URL.revokeObjectURL(url);
 });
 
+//
+// Export button reformats the table data to an ODS file.
+//
 document.getElementById("export-btn").addEventListener("click", () => {
 	const data = table.getData();
 	if (!data.length) return;
@@ -110,6 +135,9 @@ document.getElementById("export-btn").addEventListener("click", () => {
 	XLSX.writeFile(wb, "recordings.ods");
 });
 
+//
+// Help button simply redirects to the help page.
+//
 document.getElementById("help-btn").addEventListener("click", () => {
 	window.location.href = 'web_help.html';
 });
