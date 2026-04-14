@@ -146,7 +146,7 @@ document.getElementById("help-btn").addEventListener("click", () => {
 });
 
 document.getElementById("clear-btn").addEventListener("click", () => {
-	//document.getElementById("table").innerHTML = "";
+	document.getElementById("table").innerHTML = "";
 	table.clearData();
 	table.setColumns([]);
 	table.clearHistory();
