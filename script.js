@@ -147,7 +147,6 @@ document.getElementById("help-btn").addEventListener("click", () => {
 
 document.getElementById("clear-btn").addEventListener("click", () => {
 	document.getElementById("table").innerHTML = "";
-	table = null;
 	localStorage.clear();
 	location.reload();
 	document.getElementById("playlist-btn").disabled = true;
