@@ -56,6 +56,7 @@ const table = new Tabulator("#table", {
 	selectableRows: true,
 	selectableRowsRangeMode: "click",
 	movableRows: true,
+	movableColumns: true,
 	rowHeader: { headerSort: false, resizable: false, minWidth: 30, width: 30, rowHandle: true, formatter: "handle" },
 	persistence: true,
 });
@@ -140,4 +141,8 @@ document.getElementById("export-btn").addEventListener("click", () => {
 //
 document.getElementById("help-btn").addEventListener("click", () => {
 	window.location.href = 'web_help.html';
+});
+
+document.getElementById("clear-btn").addEventListener("click", () => {
+	table.clearData();
 });
