@@ -12,6 +12,7 @@ application found at <https://github.com/mcochris/Recording-analyzer>.
 - Reads a JSON file that you explicitly upload to the website
 - Analyzes the JSON data and displays results to your terminal
 - Collects log data, including IP addresses, browser types, and pages visited
+- Store data about the state of the tables in the browsers local storage.
 
 ## What the website does NOT do
 
