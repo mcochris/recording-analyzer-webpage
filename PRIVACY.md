@@ -11,11 +11,12 @@ application found at <https://github.com/mcochris/Recording-analyzer>.
 
 - Reads a JSON file that you explicitly upload to the website
 - Analyzes the JSON data and displays the results
-- Collects log data, including IP addresses, browser types, and pages visited. Server logs are retained for 30 days and are not shared with third parties.
+- Collects log data, including IP addresses and pages visited. Server logs are retained for 30 days and are not shared with third parties.
 - Stores table display preferences in your browser's local storage — this data never leaves your device
 
 ## What the website does NOT do
 
+- Does not store the information you upload
 - Does not collect personal information beyond the server logs described above
 - Does not display advertising
 - Does not read files beyond those you explicitly provide
