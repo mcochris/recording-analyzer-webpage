@@ -8,7 +8,7 @@ See the README at <https://github.com/mcochris/Recording-analyzer> for more info
 The recording-analyzer program has an option to output the statistics it generates to the JSON data format. The user can upload
 the JSON file to this website via the "Load JSON file" button. This website analyzes the data and displays it in an interactive, sortable table.
 
-<img src="website screenshot.png" alt="Screenshot" width="800">
+<img src="screenshot.png" alt="Screenshot" width="800">
 
 ## 🏁 Getting started
 
