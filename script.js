@@ -21,7 +21,7 @@ const COLUMN_DEFS = [
 	{ title: "Album", field: "album", sorter: "string" },
 	{ title: "Track", field: "track", sorter: "number" },
 	{ title: "Duration", field: "duration", sorter: "number" },
-	{ title: "Year", field: "year", sorter: "number" },
+	{ title: "Date", field: "date", sorter: "number" },
 	{ title: "Sample Rate", field: "sample_rate", sorter: "number" },
 	{ title: "Avg. Bit Rate", field: "bit_rate", sorter: "number" },
 	{ title: "Bits Per Sample", field: "bits_per_sample", sorter: "number" },
