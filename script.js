@@ -51,7 +51,7 @@ function columnsFromData(data) {
 //
 const table = new Tabulator("#table", {
 	columns: [],
-	height: "80vh",
+	height: "100%",
 	layout: "fitData",
 	pagination: "local",
 	selectableRows: true,
@@ -96,8 +96,8 @@ document.getElementById("playlist-btn").addEventListener("click", () => {
 		const artist2 = artist ? `${artist} - ` : "";
 		const file = row.file ?? "";
 		const path = row.path ?? "";
-
-		lines.push(`#EXTINF:${duration},${artist2}${file}`);
+		const fileWithoutExt = file.replace(/\.[^.]+$/, '');
+		lines.push(`#EXTINF:${duration},${artist2}${fileWithoutExt}`);
 		lines.push(`${path}/${file}`);
 	}
 
