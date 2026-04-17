@@ -39,3 +39,13 @@ body {
 	display: flex;
 	gap: 8px;
 }
+
+#import-error {
+	font-size: 16px;
+	font-weight: bold;
+	display: none;
+	color: red;
+	white-space: pre-wrap;
+	font-family: monospace;
+	margin-top: 1em;
+}
