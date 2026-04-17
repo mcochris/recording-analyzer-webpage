@@ -142,7 +142,7 @@ document.getElementById("export-btn").addEventListener("click", () => {
 // Help button simply redirects to the help page.
 //
 document.getElementById("help-btn").addEventListener("click", () => {
-	window.open('https://github.com/mcochris/recording-analyzer-webpage/blob/main/README.md', '_blank');
+	window.open('https://github.com/mcochris/recording-analyzer-webpage/blob/main/README.md#readme', '_blank');
 });
 
 document.getElementById("clear-btn").addEventListener("click", () => {
