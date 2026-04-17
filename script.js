@@ -10,6 +10,11 @@ document.getElementById("export-btn").disabled = true;
 document.getElementById("clear-btn").disabled = true;
 
 //
+// Clear any existing data in localStorage to ensure a fresh start each time the page is loaded.
+//
+localStorage.clear();
+
+//
 // Define all possible columns with their titles and field names.
 //
 const COLUMN_DEFS = [
@@ -59,7 +64,7 @@ const table = new Tabulator("#table", {
 	movableRows: true,
 	movableColumns: true,
 	rowHeader: { headerSort: false, resizable: false, minWidth: 30, width: 30, rowHandle: true, formatter: "handle" },
-	persistence: true,
+	persistence: true
 });
 
 //
