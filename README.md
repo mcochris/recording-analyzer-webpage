@@ -23,6 +23,7 @@ recording-analyzer --json /home/chris/Music > myMusic.json
 ## 🚀 Features
 
 - Each column of the table can be sorted by clicking the column header.
+- You can sort by a second (or third, fourth, etc) column by holding down the ctrl key and clicking the other column header.
 - Columns can be moved by clicking and dragging the column to a new position.
 - Rows can be moved by clicking and dragging the three line icon in the table's first column to a new position.
 - Rows can be selected by clicking them.
