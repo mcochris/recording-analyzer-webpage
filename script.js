@@ -36,7 +36,7 @@ const COLUMN_DEFS = [
 	{ title: "R Peak (dB)", field: "right_peak_level_db", sorter: "number" },
 	{ title: "R Noise (dB)", field: "right_noise_floor_db", sorter: "number" },
 	{ title: "R Crest", field: "right_crest_factor", sorter: "number" },
-	{ title: "Phase (°)", field: "average_phase_degrees", sorter: "number" },
+	{ title: "Phase", field: "average_phase_degrees", sorter: "number" },
 	{ title: "Loudness (LUFS)", field: "integrated_loudness_lufs", sorter: "number" },
 	{ title: "True Peak (dB)", field: "true_peak_db", sorter: "number" },
 	{ title: "LRA (LU)", field: "loudness_range_lu", sorter: "number" }
