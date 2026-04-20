@@ -59,6 +59,7 @@ body {
 
 .github-corner svg {
 	display: block;
+	transform-origin: 130px 106px;
 }
 
 /* Optional: animate the octocat arm on hover */
