@@ -24,22 +24,22 @@ const COLUMN_DEFS = [
 	{ title: "Genre", field: "genre", sorter: "string" },
 	{ title: "Artist", field: "artist", sorter: "string" },
 	{ title: "Album", field: "album", sorter: "string" },
-	{ title: "Track", field: "track", sorter: "number" },
+	{ title: "Track", field: "track", sorter: "string" },
 	{ title: "Duration", field: "duration", sorter: "number" },
-	{ title: "Date", field: "date", sorter: "number" },
+	{ title: "Date", field: "date", sorter: "string" },
 	{ title: "Sample Rate", field: "sample_rate", sorter: "number" },
 	{ title: "Avg. Bit Rate", field: "bit_rate", sorter: "number" },
 	{ title: "Bits Per Sample", field: "bits_per_sample", sorter: "number" },
-	{ title: "L Peak (dB)", field: "left_peak_level_db", sorter: "number" },
-	{ title: "L Noise (dB)", field: "left_noise_floor_db", sorter: "number" },
-	{ title: "L Crest", field: "left_crest_factor", sorter: "number" },
-	{ title: "R Peak (dB)", field: "right_peak_level_db", sorter: "number" },
-	{ title: "R Noise (dB)", field: "right_noise_floor_db", sorter: "number" },
-	{ title: "R Crest", field: "right_crest_factor", sorter: "number" },
-	{ title: "Phase", field: "average_phase_degrees", sorter: "number" },
-	{ title: "Loudness (LUFS)", field: "integrated_loudness_lufs", sorter: "number" },
-	{ title: "True Peak (dB)", field: "true_peak_db", sorter: "number" },
-	{ title: "LRA (LU)", field: "loudness_range_lu", sorter: "number" }
+	{ title: "L Peak (dB)", field: "left_peak_dB", sorter: "number" },
+	{ title: "L Noise (dB)", field: "left_noise_dB", sorter: "number" },
+	{ title: "L Crest", field: "left_crest_dB", sorter: "number" },
+	{ title: "R Peak (dB)", field: "right_peak_dB", sorter: "number" },
+	{ title: "R Noise (dB)", field: "right_noise_dB", sorter: "number" },
+	{ title: "R Crest", field: "right_crest_dB", sorter: "number" },
+	{ title: "Phase", field: "average_phase", sorter: "number" },
+	{ title: "Loudness (LUFS)", field: "integrated_loudness_LUFS", sorter: "number" },
+	{ title: "True Peak (dB)", field: "true_peak_dBTP", sorter: "number" },
+	{ title: "LRA (LU)", field: "loudness_range_LU", sorter: "number" }
 ];
 
 //
@@ -238,8 +238,8 @@ document.getElementById("load-btn").addEventListener("click", () => {
 
 	table.import(jsonImporterWithValidation, ".json").then(() => {
 		const data = table.getData();
-		const columns = columnsFromData(data);
-		table.setColumns(columns);
+		//const columns = columnsFromData(data);
+		table.setColumns(COLUMN_DEFS);
 		document.getElementById("playlist-btn").disabled = false;
 		document.getElementById("export-btn").disabled = false;
 		document.getElementById("clear-btn").disabled = false;
