@@ -1,6 +1,18 @@
-//====================================
-// Recording Analyzer Web App
-//====================================
+//
+// ╭──────────────────────────────────────────────────────────────────────────╮
+// │                                                                          │
+// │                Welcome to the recording-analyzer website!                │
+// │                                                                          │
+// │      Display the audio file statistics from the recording-analyzer.      │
+// │                                                                          │
+// │          For more details, please visit the GitHub repository:           │
+// │          https://github.com/mcochris/recording-analyzer-webpage          │
+// │                                                                          │
+// │     Questions, issues, suggestions? Please open a support ticket at:     │
+// │      https://github.com/mcochris/recording-analyzer-webpage/issues       │
+// │                                                                          │
+// ╰──────────────────────────────────────────────────────────────────────────╯
+//
 
 //
 // Disable playlist and export buttons until data is loaded.
@@ -180,6 +192,10 @@ function importDataValidator(data) {
 		return pendingImportError;
 	}
 
+	//	Assume the first row is metadata and remove it from the data array.
+	const metadata = data.at(0) || {};
+	data.splice(0, 1); // Remove metadata row from table data
+
 	if (!Array.isArray(data) || data.length === 0) {
 		return "Data must be a non-empty array of row objects";
 	}
@@ -233,8 +249,8 @@ table.on("importError", function (err) {
 //
 document.getElementById("load-btn").addEventListener("click", () => {
 	// Clear any previous import error before attempting a new load.
-	const box = document.getElementById("import-error");
-	if (box) { box.textContent = ""; box.style.display = "none"; }
+	//const box = document.getElementById("import-error");
+	//if (box) { box.textContent = ""; box.style.display = "none"; }
 
 	table.import(jsonImporterWithValidation, ".json").then(() => {
 		const data = table.getData();
@@ -317,6 +333,9 @@ document.getElementById("help-btn").addEventListener("click", () => {
 	window.open('https://github.com/mcochris/recording-analyzer-webpage/blob/main/README.md#readme', '_blank');
 });
 
+//
+// Clear button resets the entire app state, including localStorage and the table, to allow a fresh start without reloading the page.
+//
 document.getElementById("clear-btn").addEventListener("click", () => {
 	document.getElementById("table").innerHTML = "";
 	table.clearData();
