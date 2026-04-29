@@ -33,15 +33,15 @@ const COLUMN_DEFS = [
 	{ title: "ID", field: "id", sorter: "number", visible: false },
 	{ title: "Path", field: "path", sorter: "string" },
 	{ title: "File", field: "file", sorter: "string" },
-	{ title: "Genre", field: "genre", sorter: "string" },
-	{ title: "Artist", field: "artist", sorter: "string" },
-	{ title: "Album", field: "album", sorter: "string" },
-	{ title: "Track", field: "track", sorter: "string" },
-	{ title: "Duration", field: "duration", sorter: "number" },
-	{ title: "Date", field: "date", sorter: "string" },
-	{ title: "Sample Rate", field: "sample_rate", sorter: "number" },
-	{ title: "Avg. Bit Rate", field: "bit_rate", sorter: "number" },
-	{ title: "Bits Per Sample", field: "bits_per_sample", sorter: "number" },
+	{ title: "Genre", field: "genre", sorter: "string", metadata: true },
+	{ title: "Artist", field: "artist", sorter: "string", metadata: true },
+	{ title: "Album", field: "album", sorter: "string", metadata: true },
+	{ title: "Track", field: "track", sorter: "string", metadata: true },
+	{ title: "Duration", field: "duration", sorter: "number", metadata: true },
+	{ title: "Date", field: "date", sorter: "string", metadata: true },
+	{ title: "Sample Rate", field: "sample_rate", sorter: "number", metadata: true },
+	{ title: "Avg. Bit Rate", field: "bit_rate", sorter: "number", metadata: true },
+	{ title: "Bits Per Sample", field: "bits_per_sample", sorter: "number", metadata: true },
 	{ title: "L Peak (dB)", field: "left_peak_dB", sorter: "number" },
 	{ title: "L Noise (dB)", field: "left_noise_dB", sorter: "number" },
 	{ title: "L Crest", field: "left_crest_dB", sorter: "number" },
@@ -54,14 +54,8 @@ const COLUMN_DEFS = [
 	{ title: "LRA (LU)", field: "loudness_range_LU", sorter: "number" }
 ];
 
-//
-// Determine which columns to show based on the fields present in the data.
-//
-function columnsFromData(data) {
-	if (!data.length) return [];
-	const presentFields = new Set(Object.keys(data[0]));
-	return COLUMN_DEFS.filter(col => presentFields.has(col.field));
-}
+const STATISTICAL_DEFS = COLUMN_DEFS.filter(col => !col.metadata);
+var has_metadata = null; // Will hold the metadata row if present
 
 //
 // JSON validation helpers for the custom importer.
@@ -193,8 +187,10 @@ function importDataValidator(data) {
 	}
 
 	//	Assume the first row is metadata and remove it from the data array.
-	const metadata = data.at(0) || {};
-	data.splice(0, 1); // Remove metadata row from table data
+	const metadataRecord = data.at(0);
+	const hasMetadataRecord = metadataRecord != null && 'metadata' in metadataRecord;
+	has_metadata = hasMetadataRecord ? !!metadataRecord.metadata : false;
+	hasMetadataRecord && data.splice(0, 1); // Remove metadata row from table data
 
 	if (!Array.isArray(data) || data.length === 0) {
 		return "Data must be a non-empty array of row objects";
@@ -254,8 +250,7 @@ document.getElementById("load-btn").addEventListener("click", () => {
 
 	table.import(jsonImporterWithValidation, ".json").then(() => {
 		const data = table.getData();
-		//const columns = columnsFromData(data);
-		table.setColumns(COLUMN_DEFS);
+		table.setColumns(has_metadata ? COLUMN_DEFS : STATISTICAL_DEFS);
 		document.getElementById("playlist-btn").disabled = false;
 		document.getElementById("export-btn").disabled = false;
 		document.getElementById("clear-btn").disabled = false;
