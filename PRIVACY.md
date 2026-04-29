@@ -36,7 +36,7 @@ This site is hosted in the United States.
 
 ## Policy update notification
 
-Changes to this policy will be reflected in the repository commit history.
+Changes to this policy will be reflected here.
 
 ## Contact
 
